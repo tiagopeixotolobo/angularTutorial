@@ -10,13 +10,12 @@ import { FormGroup, FormControl, ReactiveFormsModule } from "@angular/forms";
   imports: [CommonModule, HousingLocationComponent, ReactiveFormsModule],
   template: `
     <section>
-      <form [formGroup]="searchForm" (submit)="filterHousingList()">
+      <form>
         <input
           type="text"
           placeholder="Filter by city"
-          formControlName="searchCity"
-        />
-        <button class="primary" type="submit">Search</button>
+        /> 
+        <button class="primary" type="button">Search</button>
       </form>
     </section>
     <section class="results">
@@ -35,11 +34,4 @@ export class HomeComponent {
   housingService: HousingService = inject(HousingService);
   housingLocationList: HousingLocation[] =
     this.housingService.getAllHousingLocations();
-
-  filterHousingList() {
-    this.housingLocationList = this.housingService.getHousingLocationByCity(
-      this.searchForm.value.searchCity
-    );
-    console.log("Oi");
-  }
 }

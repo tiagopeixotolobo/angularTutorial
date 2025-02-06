@@ -125,10 +125,4 @@ export class HousingService {
       (housingLocation) => housingLocation.id === id
     );
   }
-
-  getHousingLocationByCity(city: string | null | undefined): HousingLocation[] {
-    return this.housingLocationList.filter((housingLocation) =>
-      housingLocation.city.toLowerCase().includes((city || "").toLowerCase())
-    );
-  }
 }
